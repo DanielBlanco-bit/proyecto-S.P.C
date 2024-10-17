@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: gray;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+    text-shadow: 2px 2px 5px gray;
+    font-family: "papyrus", fantasy;
+}
+h3{
+    font-size: 30px;
+    text-align: center;
+    color: #333;
+    text-shadow: 2px 2px 5px gray;
+    font-family: "papyrus", fantasy;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-family: "papyrus", fantasy;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+    font-family: "papyrus", fantasy;
+}
+input[type="submit"] {
+    font-size: 15px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-family: "papyrus", fantasy;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.logo{
+    max-width: 50%;
+    height: auto;
+    padding-left: 140px;
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
+}
