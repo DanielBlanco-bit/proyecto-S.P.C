@@ -12,8 +12,8 @@ import time
 import ssd1306
 
 # designamos nuestros perifericos 
-boton_server = Pin(33, Pin.IN, Pin.PULL_UP)
-led = Pin(2, Pin.OUT)
+boton_server = Pin(18, Pin.IN, Pin.PULL_UP)
+led = Pin(12, Pin.OUT)
 
 # variables a utilizar
 MAX_HISTORY = 32
@@ -37,7 +37,7 @@ oled.fill(0)
 oled.show()
 
 # mini presentacion del grupo en el oled
-oled.text('Protecto General', 0, 20)
+oled.text('Proyecto General', 0, 20)
 oled.text('Electronica', 20, 30)
 oled.text('6to 6ta', 30, 40)
 oled.show()
@@ -194,8 +194,8 @@ def wifi_config(s):
             filename = '/index.html'
         
         if request.find('POST /config') != -1:
-            match = ure.search("wifi_ssid=(.+?)&wifi_password=(.+?)", request)
-            print(match)
+            match = ure.search(r"wifi_ssid=([\w.+\s-]+)&wifi_password=([\w.+-]+)", request)
+            print(f'match : {match}')
             if match:
                 print("match")
                 wifi_ssid = match.group(1)
@@ -227,7 +227,7 @@ def wifi_config(s):
 def web_page(): 
     html = """
     <head>
-    <title>ESP32 Web Server</title>
+    <title>Proyecto General</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="data:,">
@@ -304,7 +304,7 @@ def web_page():
     </style>
 </head>
 <body>
-    <h1>ESP32 Web Server</h1>
+    <h1>Proyecto General : S.P.C</h1>
     <p>Sensor MAX30102</p>
     <table>
         <tbody>
@@ -384,7 +384,7 @@ def webserver_sensor(s):
             conn.close()
         except Exception as e:
             print(e)
-        time.sleep(0.1)
+        time.sleep(1)
 
 # inicia un web server y pregunta si es para la lectura del sensor o para el protocolo de wifi            
 def webserver(protocolo):
@@ -450,6 +450,14 @@ if boton_server.value() == 0:
     if not ip == None:
         print('Conecta tu dispositivo a la red "Proyecto General" e introduce la contraseña')
         print('luego, abre el navegador y visita http://{}'.format(ip))
+        oled.fill(0)
+        oled.text('webserver wifi', 0, 0)
+        oled.text('iniciado', 0, 10)
+        oled.text('Conectate', 0, 20)
+        oled.text('a la red wifi', 0, 30)
+        oled.text('luego ingrese a', 0, 40)
+        oled.text(f'{ip}', 0, 50)
+        oled.show()
         webserver(0)
     else:
         print('No se pudo establecer el puerto de comunicacion')
